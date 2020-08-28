@@ -1,0 +1,23 @@
+.container {
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.game-info {
+  display: grid;
+  grid-template-rows: auto auto 30px auto;
+
+  > * { grid-column: 1 / 2; }
+
+  img {
+    grid-row: 2 / span 2;
+    margin: 0 auto;
+  }
+
+  h1 {
+    grid-row: 3 / span 2;
+    margin-top: 0;
+    font-size: 4.4rem;
+  }
+}
