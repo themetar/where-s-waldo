@@ -1,9 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  asset_name: MyString
-
-two:
-  title: MyString
-  asset_name: MyString
+beach:
+  title: On the beach
+  asset_name: waldo-1.jpg

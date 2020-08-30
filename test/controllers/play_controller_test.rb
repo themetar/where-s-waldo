@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class PlayControllerTest < ActionDispatch::IntegrationTest
-  test "should get show" do
-    get play_show_url
+  test "should get play scene" do
+    get play_url(scenes(:beach))
     assert_response :success
   end
 
