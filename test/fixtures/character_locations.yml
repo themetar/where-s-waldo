@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+beach_waldo:
+  character: waldo
+  scene: beach
+  x: 1598
+  y: 574
+
+beach_wenda:
+  character: wenda
+  scene: beach
+  x: 2004
+  y: 627
+
+beach_wizard:
+  character: wizard
+  scene: beach
+  x: 684
+  y: 532
+
+beach_odlaw:
+  character: odlaw
+  scene: beach
+  x: 258
+  y: 534
