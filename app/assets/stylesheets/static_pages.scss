@@ -21,3 +21,7 @@
     font-size: 4.4rem;
   }
 }
+
+.scenes-list { transition: transform 200ms ease-in; }
+
+.scenes-list.hidden { transform: scaleY(0); }

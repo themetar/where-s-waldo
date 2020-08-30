@@ -5,4 +5,9 @@
     <h1>Where Is Waldo?</h1>
   </header>
   <button>Play</button>
+  <ol class="scenes-list hidden">
+    <% @scenes.each do |scene| %>
+    <li><%= link_to scene.title, play_path(scene) %></li>
+    <% end %>
+  </ol>
 </div>
