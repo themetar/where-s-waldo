@@ -1,3 +1,20 @@
-// Place all the styles related to the Play controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#scene-container { position: relative; }
+
+.target-box {
+  position: absolute;
+  box-sizing: border-box;
+  border: 1px solid black;
+
+  .white-fill {
+    border: 4px solid white;
+
+    .inner-frame {
+      border: 1px solid black;
+      height: 90px;
+    }
+  }
+
+  .name-tag {
+    background: white;
+  }
+}
