@@ -46,6 +46,12 @@ document.addEventListener("turbolinks:load", () => {
 
   let sceneBox = document.getElementById("scene-container");
 
+  const addToSceneBox = function(element, {x, y}) {
+    element.style.left = x + "px";
+    element.style.top = y + "px";
+    sceneBox.appendChild(element);
+  };
+
   let targetBoxAdded = false;
   let targetBox;
 
@@ -79,9 +85,7 @@ document.addEventListener("turbolinks:load", () => {
     // set waiting flag
     waitingOnAPI = true;
     // add loading marker
-    waitingMarker.style.left = cursor.x + "px";
-    waitingMarker.style.top = cursor.y + "px";
-    sceneBox.appendChild(waitingMarker);
+    addToSceneBox(waitingMarker, cursor);
 
     fetch(window.location + "/guess",
       {
@@ -100,9 +104,7 @@ document.addEventListener("turbolinks:load", () => {
       if (data.result == "hit") {
         // add hit marker
         const hitMarker = makeHitMarkerBox(charactersToFind[characterGuess]);
-        hitMarker.style.left = cursor.x + "px";
-        hitMarker.style.top = cursor.y + "px";
-        sceneBox.appendChild(hitMarker);
+        addToSceneBox(hitMarker, cursor);
 
         // filter characters
         const remaining = data.remaining || [];
@@ -132,9 +134,7 @@ document.addEventListener("turbolinks:load", () => {
 
     targetBox = targetBox || makeTargetBox(charactersToFind, onCharacterSelect);
     resetTargetBoxSelection(targetBox);
-    targetBox.style.left = event.offsetX + "px";
-    targetBox.style.top = event.offsetY + "px";
-    sceneBox.appendChild(targetBox);
+    addToSceneBox(targetBox, cursor);
     targetBoxAdded = true;
   });
 });
