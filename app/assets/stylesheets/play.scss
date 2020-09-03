@@ -21,6 +21,8 @@
   }
 }
 
+select { min-width: 100%; }
+
 .waiting-marker {
   position: absolute;
   display: block;
