@@ -1,6 +1,31 @@
 #scene-container { position: relative; }
 
-.target-box, .hit-marker {
+.target-box {
+  position: absolute;
+  box-sizing: border-box;
+  transform: translate(-50%, -10px);
+
+  .name-tag {
+    margin-top: 40px;
+    padding: 5px;
+    border-radius: 5px;
+    background: rgba($color: #000000, $alpha: .5);
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    border: 20px solid transparent;
+    border-bottom-color: rgba($color: #000000, $alpha: .5);
+  }
+}
+
+.hit-marker {
   position: absolute;
   box-sizing: border-box;
   border: 1px solid black;

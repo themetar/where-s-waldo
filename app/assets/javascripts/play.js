@@ -4,10 +4,6 @@
 const makeTargetBox = function (characters, changeHandler) {
   const div = document.createElement("div");
   div.classList.add("target-box");
-  const whiteFill = div.appendChild(document.createElement("div"));
-  whiteFill.classList.add("white-fill");
-  const innerFrame = whiteFill.appendChild(document.createElement("div"));
-  innerFrame.classList.add("inner-frame");
   const nameTag = div.appendChild(document.createElement("div"));
   nameTag.classList.add("name-tag");
   const select = nameTag.appendChild(document.createElement("select"));
