@@ -63,21 +63,21 @@ select { min-width: 100%; }
   width: 60px;
   height: 60px;
   animation: fade-out 500ms;
-}
 
-.miss-marker::before,
-.miss-marker::after {
-  content: "";
-  display: block;
-  background-color: red;
-  width: 25%;
-  height: 80%;
-  transform-origin: center;
-  position: absolute;
-  transform: translate(-50%, -50%) rotate(45deg);
-}
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    background-color: red;
+    width: 25%;
+    height: 80%;
+    transform-origin: center;
+    position: absolute;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
 
-.miss-marker::after { transform: translate(-50%, -50%) rotate(-45deg); }
+  &::after { transform: translate(-50%, -50%) rotate(-45deg); }
+}
 
 @keyframes fade-out {
   from { opacity: 1; }
