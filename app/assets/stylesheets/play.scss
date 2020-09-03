@@ -4,6 +4,7 @@
   position: absolute;
   box-sizing: border-box;
   border: 1px solid black;
+  transform: translate(-50%, -50px);
 
   .white-fill {
     border: 4px solid white;
@@ -17,4 +18,12 @@
   .name-tag {
     background: white;
   }
+}
+
+.waiting-marker {
+  position: absolute;
+  display: block;
+  background: red;
+  width: 30px;
+  height: 30px;
 }
