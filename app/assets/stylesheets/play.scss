@@ -1,6 +1,6 @@
 #scene-container { position: relative; }
 
-.target-box {
+.target-box, .hit-marker {
   position: absolute;
   box-sizing: border-box;
   border: 1px solid black;
@@ -12,6 +12,7 @@
     .inner-frame {
       border: 1px solid black;
       height: 90px;
+      min-width: 90px;
     }
   }
 

@@ -28,6 +28,19 @@ const makeWaitingMarker = function() {
   return div;
 };
 
+const makeHitMarkerBox = function (characterName) {
+  const div = document.createElement("div");
+  div.classList.add("hit-marker");
+  const whiteFill = div.appendChild(document.createElement("div"));
+  whiteFill.classList.add("white-fill");
+  const innerFrame = whiteFill.appendChild(document.createElement("div"));
+  innerFrame.classList.add("inner-frame");
+  const nameTag = div.appendChild(document.createElement("div"));
+  nameTag.classList.add("name-tag");
+  nameTag.appendChild(document.createTextNode(characterName));
+  return div;
+};
+
 document.addEventListener("turbolinks:load", () => {
   const token = document.getElementsByName('csrf-token')[0].content;
 
@@ -44,15 +57,18 @@ document.addEventListener("turbolinks:load", () => {
   };
 
   let cursor;
+  let characterGuess;
 
   let waitingOnAPI = false;
   let waitingMarker = makeWaitingMarker();
 
   const onCharacterSelect = function(event) {
+    characterGuess = event.target.value;
+
     const guess = new URLSearchParams({
       x: cursor.x,
       y: cursor.y,
-      character: event.target.value,
+      character: characterGuess,
     });
 
     // remove target box
@@ -82,7 +98,11 @@ document.addEventListener("turbolinks:load", () => {
       sceneBox.removeChild(waitingMarker);
 
       if (data.result == "hit") {
-        // TODO: add hit marker
+        // add hit marker
+        const hitMarker = makeHitMarkerBox(charactersToFind[characterGuess]);
+        hitMarker.style.left = cursor.x + "px";
+        hitMarker.style.top = cursor.y + "px";
+        sceneBox.appendChild(hitMarker);
 
         // filter characters
         const remaining = data.remaining || [];
