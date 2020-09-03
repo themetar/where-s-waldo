@@ -41,6 +41,13 @@ const makeHitMarkerBox = function (characterName) {
   return div;
 };
 
+const makeMissMarker = function() {
+  const div = document.createElement("div");
+  div.classList.add("miss-marker");
+  div.addEventListener("animationend", () => div.parentElement.removeChild(div));
+  return div;
+};
+
 document.addEventListener("turbolinks:load", () => {
   const token = document.getElementsByName('csrf-token')[0].content;
 
@@ -109,6 +116,10 @@ document.addEventListener("turbolinks:load", () => {
         // filter characters
         const remaining = data.remaining || [];
         charactersToFind = remaining.reduce((obj, value) => {obj[value] = charactersToFind[value]; return obj;}, {});
+      } else {
+        // add miss marker
+        const missMarker = makeMissMarker();
+        addToSceneBox(missMarker, cursor);
       }
 
       if (data.won) {
