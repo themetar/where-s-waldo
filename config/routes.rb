@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root to: "static_pages#home"
   resources :play, only: :show do
     post "guess", on: :member
+    resources :scores, only: [:index, :new, :create]
   end
 end
