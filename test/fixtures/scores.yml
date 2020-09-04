@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  player_name: Hugh Mann
+  time: 125
+  scene: beach
+
+two:
+  player_name: Guy A.
+  time: 87
+  scene: beach
