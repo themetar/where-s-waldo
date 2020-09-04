@@ -18,6 +18,11 @@ class PlayController < ApplicationController
     game_data["found"][params[:character]] = hit
     remaining = game_data["found"].select { |k, v| !v }.keys
 
+    if remaining.empty?
+      game_data["end_time"] = Time.now
+      game_data["won"] = true
+    end
+
     session[:game_data] = game_data
 
     respond_to do |format|
