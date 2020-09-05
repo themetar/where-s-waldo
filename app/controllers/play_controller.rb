@@ -30,7 +30,10 @@ class PlayController < ApplicationController
         output = {}
         output[:result] = hit ? "hit" : "miss"
         output[:remaining] = remaining unless remaining.empty?
-        output[:won] = true if remaining.empty?
+        if remaining.empty?
+          output[:won] = true 
+          output[:time] = (game_data["end_time"] - Time.parse(game_data["start_time"])).round
+        end
         render json: output
       end
     end

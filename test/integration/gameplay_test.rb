@@ -54,8 +54,10 @@ class GameplayTest < ActionDispatch::IntegrationTest
       params: {x: 2010, y: 615, character: "wenda"},
       xhr: true
     assert_response :success
-    assert_equal ({"result" => "hit", "won" => true}),
-      JSON.parse(@response.body)
+    response_data = JSON.parse(@response.body)
+    assert_equal "hit", response_data["result"]
+    assert_equal true, response_data["won"]
+    assert_not_nil response_data["time"]
       
   end
 end

@@ -119,6 +119,9 @@ document.addEventListener("turbolinks:load", () => {
       }
 
       if (data.won) {
+        // inform the player. show score form
+        let timeSpan = document.querySelector(".time");
+        timeSpan.innerHTML = data.time;
         let form_overlay = document.querySelector(".fullscreen-overlay");
         form_overlay.classList.remove("hidden");
       }
