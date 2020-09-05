@@ -7,7 +7,7 @@ class SceneTest < ActiveSupport::TestCase
   end
 
   test "should get scores" do
-    assert_equal 2, scenes(:beach).scores.size
+    assert_equal 102, scenes(:beach).scores.size
   end
 
   test "should create new score" do

@@ -9,3 +9,10 @@ two:
   player_name: Guy A.
   time: 87
   scene: beach
+
+<% 100.times do |n| %>
+score_<%= n + 3 %>:
+  player_name: Player <%= n + 3 %>
+  time: <%= 10 + n * 10 %>
+  scene: beach
+<% end %>
