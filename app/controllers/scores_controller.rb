@@ -1,7 +1,9 @@
 class ScoresController < ApplicationController
   def index
     @scene = Scene.find(params[:play_id])
-    @scores = @scene.scores
+    @page = (params[:page] || 1).to_i
+    @per_page = 30
+    @scores = @scene.scores.order(time: :ASC, created_at: :ASC).limit(@per_page).offset((@page - 1) * @per_page)
   end
 
   def new

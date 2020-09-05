@@ -56,4 +56,19 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     assert_redirected_to play_path(scene)
   end
+
+  test "should list scenes scores" do
+    get play_scores_path(scenes(:beach))
+    assert_match "Player 3", response.body 
+  end
+
+  test "should sort scores by time" do
+    get play_scores_path(scenes(:beach))
+    assert_select "li:first-child", "Player 3 10"
+  end
+
+  test "should page scores" do
+    get play_scores_path(scenes(:beach), page: 2)
+    assert_select "li:first-child", "Player 31 290"
+  end
 end
