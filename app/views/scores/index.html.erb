@@ -1,0 +1,10 @@
+<h1>High scores for <%= link_to @scene.title, play_path(@scene) %></h1>
+<div class="container">
+  <ol>
+  <% @scores.each do |score| %>
+    <li id="<%= score.id %>">
+      <%= score.player_name %> <%= score.time %>
+    </li>
+  <% end %>
+  </ol>
+</div>

@@ -1,5 +1,7 @@
 class ScoresController < ApplicationController
   def index
+    @scene = Scene.find(params[:play_id])
+    @scores = @scene.scores
   end
 
   def new
