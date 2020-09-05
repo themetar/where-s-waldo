@@ -1,6 +1,17 @@
 require 'test_helper'
 
 class ScoresControllerTest < ActionDispatch::IntegrationTest
+
+  def guess_all(scene)
+    scene.character_locations
+      .map { |char_loc| {x: char_loc.x, y: char_loc.y, character: char_loc.character} }
+      .each do |params|
+        post guess_play_path(scene),
+          params: params,
+          xhr: true
+      end
+  end
+
   test "should get index" do
     get play_scores_path(scenes(:beach))
     assert_response :success
@@ -18,25 +29,14 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
     get play_path(scene)
     
     # guess correctly for odlaw, wizard, waldo and wenda
-    post guess_play_path(scene.id),
-      params: {x: 265, y: 524, character: "odlaw"},
-      xhr: true
-    post guess_play_path(scene.id),
-      params: {x: 670, y: 542, character: "wizard"},
-      xhr: true
-    post guess_play_path(scene.id),
-      params: {x: 1600, y: 600, character: "waldo"},
-      xhr: true
-    post guess_play_path(scene.id),
-      params: {x: 2010, y: 615, character: "wenda"},
-      xhr: true
+    guess_all(scene)
 
     # game won
     # post score
     assert_difference "Score.count", 1 do
       post play_scores_path(scenes(:beach)), params: {player_name: "P. Erson"}
-      assert_response :redirect
     end
+    assert_response :redirect
     assert_nil session[:game_data]
   end
 
