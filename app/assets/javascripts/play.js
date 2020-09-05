@@ -119,8 +119,8 @@ document.addEventListener("turbolinks:load", () => {
       }
 
       if (data.won) {
-        // TODO: show leaderboard form
-        alert("Congrats! You found all characters!");
+        let form_overlay = document.querySelector(".fullscreen-overlay");
+        form_overlay.classList.remove("hidden");
       }
     });
   };

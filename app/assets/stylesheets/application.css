@@ -14,3 +14,39 @@
  *= require_tree .
  *= require_self
  */
+
+.fullscreen-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+}
+
+.score-form {
+  padding: 1rem;
+  border-radius: .5rem;
+  background: white;
+}
+
+.score-form .sections {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) auto;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sections > div {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+.time { font-size: 2rem; }
+
+.center { text-align: center; }
+
+.hidden { display: none; }

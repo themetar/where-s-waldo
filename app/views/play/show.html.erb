@@ -1,4 +1,7 @@
 <h1><%= @scene.title %></h1>
+<div class="fullscreen-overlay hidden">
+  <%= render "shared/score_form" %>
+</div>
 <div id="scene-container">
   <%= image_tag "scenes/#{@scene.asset_name}" %>
 </div>
