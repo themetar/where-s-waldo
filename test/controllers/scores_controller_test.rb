@@ -17,11 +17,6 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_play_score_path(scenes(:beach))
-    assert_response :success
-  end
-
   test "should add a score" do
     scene = scenes(:beach)
 

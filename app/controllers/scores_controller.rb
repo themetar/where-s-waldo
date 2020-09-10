@@ -20,11 +20,15 @@ class ScoresController < ApplicationController
       redirect_to play_path(scene_id) and return
     end
 
-    scene = Scene.find(scene_id)
+    @scene = Scene.find(scene_id)
     end_time = Time.parse(session[:game_data]["end_time"])
     start_time = Time.parse(session[:game_data]["start_time"])
-    scene.scores.create(player_name: params[:player_name], time: (end_time - start_time).round)
-    session[:game_data] = nil # clear
-    redirect_to play_scores_url(scene_id)
+    @score = @scene.scores.build(player_name: params[:player_name], time: (end_time - start_time).round)
+    if @score.save
+      session[:game_data] = nil # clear
+      redirect_to play_scores_url(scene_id)
+    else
+      render :new
+    end
   end
 end

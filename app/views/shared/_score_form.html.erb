@@ -1,15 +1,22 @@
 <section class="score-form">
   <h2 class="center">Congratulations, you found everyone!</h2>
   <p class="center">Add your achievement to the scoreboard.</p>
-  <%= form_with url: play_scores_path(@scene), method: "post" do %>
+  <%= form_with url: play_scores_path(@scene), method: "post", local: true do %>
     <div class="sections">
       <div>
         <%= label_tag :player_name, "Your name" %>
-        <%= text_field_tag :player_name %>
+        <%= text_field_tag :player_name, @score ? @score.player_name : "" %>
+        <% if @score && @score.errors.any? %>
+        <div>
+        <% @score.errors[:player_name].each do |error_msg| %>
+          <p class="form-error"><%= error_msg.capitalize %></p>
+        <% end %>
+        </div>
+        <% end %>
       </div>
       <div>
         <span>Time</span>
-        <span class="time"><%= if local_assigns[:time] then local_assigns[:time] end %></span>
+        <span class="time"><%= if @score then @score.time end %></span>
       </div>
     </div>
     <div class="center">
