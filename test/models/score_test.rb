@@ -20,4 +20,8 @@ class ScoreTest < ActiveSupport::TestCase
     assert @scene.scores.build(player_name: "a"*140, time: 123).valid?
     assert @scene.scores.build(player_name: "a"*141, time: 123).invalid?
   end
+
+  test "should not validate bad language" do
+    assert @scene.scores.build(player_name: "titfucker", time: 123).invalid?
+  end
 end
