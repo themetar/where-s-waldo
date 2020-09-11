@@ -1,10 +1,16 @@
 <h1>High scores for <%= link_to @scene.title, play_path(@scene) %></h1>
 <div class="container">
-  <ol start="<%= (@page - 1) * @per_page + 1 %>">
+  <% if @pagination[:pages] > 1 %> 
+  <%= render "pagination" %>
+  <% end %> 
+  <ol start="<%= (@pagination[:page] - 1) * @pagination[:per_page] + 1 %>">
   <% @scores.each do |score| %>
     <li id="<%= score.id %>">
       <%= score.player_name %> <%= score.time %>
     </li>
   <% end %>
   </ol>
+  <% if @pagination[:pages] > 1 %> 
+  <%= render "pagination" %>
+  <% end %> 
 </div>

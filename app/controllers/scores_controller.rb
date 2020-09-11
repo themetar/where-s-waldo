@@ -3,9 +3,15 @@ class ScoresController < ApplicationController
 
   def index
     @scene = Scene.find(params[:play_id])
-    @page = (params[:page] || 1).to_i
-    @per_page = PER_PAGE
-    @scores = @scene.scores.order(time: :ASC, created_at: :ASC, id: :ASC).limit(@per_page).offset((@page - 1) * @per_page)
+    page = (params[:page] || 1).to_i
+    per_page = PER_PAGE
+    @scores = @scene.scores.order(time: :ASC, created_at: :ASC, id: :ASC).limit(per_page).offset((page - 1) * per_page)
+    total_scores = @scene.scores.count
+    @pagination = {
+      page: page,
+      per_page: per_page,
+      pages: total_scores / per_page + 1
+    }
   end
 
   def create

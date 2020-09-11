@@ -1,0 +1,21 @@
+<div>
+  <ul class="pagination">
+    <li>
+      <%= link_to "Previous",
+                  (@pagination[:page] > 1 ? "?page=#{@pagination[:page] - 1}" : ""),
+                  @pagination[:page] < 2 ? {class: "inactive"} : {} %>
+    </li>
+    <% @pagination[:pages].times do |n| %>
+    <li>
+      <%= link_to n + 1,
+                  @pagination[:page] == n + 1 ? "" : "?page=#{n + 1}",
+                  @pagination[:page] == n + 1 ? {class: "current"} : {} %>
+    </li>
+    <% end %>
+    <li>
+      <%= link_to "Next",
+                  (@pagination[:page] < @pagination[:pages] ? "?page=#{@pagination[:page] + 1}" : ""),
+                  @pagination[:page] > @pagination[:pages] - 1 ? {class: "inactive"} : {} %>
+    </li>
+  </ul>
+</div>
