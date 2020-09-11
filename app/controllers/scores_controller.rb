@@ -1,8 +1,10 @@
 class ScoresController < ApplicationController
+  PER_PAGE = 30
+
   def index
     @scene = Scene.find(params[:play_id])
     @page = (params[:page] || 1).to_i
-    @per_page = 30
+    @per_page = PER_PAGE
     @scores = @scene.scores.order(time: :ASC, created_at: :ASC, id: :ASC).limit(@per_page).offset((@page - 1) * @per_page)
   end
 
@@ -37,6 +39,6 @@ class ScoresController < ApplicationController
                         .or(Score.where("time = :game_time AND created_at = :at_stamp AND id <= :id",
                                           {game_time: score.time, at_stamp: score.created_at, id: score.id}))
                         .count
-    redirect_to play_scores_url(score.scene, page: count_so_far / 30 + 1, anchor: score.id)
+    redirect_to play_scores_url(score.scene, page: count_so_far / PER_PAGE + 1, anchor: score.id)
   end
 end
