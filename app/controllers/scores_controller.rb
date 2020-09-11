@@ -3,10 +3,7 @@ class ScoresController < ApplicationController
     @scene = Scene.find(params[:play_id])
     @page = (params[:page] || 1).to_i
     @per_page = 30
-    @scores = @scene.scores.order(time: :ASC, created_at: :ASC).limit(@per_page).offset((@page - 1) * @per_page)
-  end
-
-  def new
+    @scores = @scene.scores.order(time: :ASC, created_at: :ASC, id: :ASC).limit(@per_page).offset((@page - 1) * @per_page)
   end
 
   def create
@@ -30,5 +27,16 @@ class ScoresController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    score = Score.find(params[:id])
+    count_so_far = Score.where("time < :game_time", {game_time: score.time})
+                        .or(Score.where("time = :game_time AND created_at < :at_stamp",
+                                          {game_time: score.time, at_stamp: score.created_at}))
+                        .or(Score.where("time = :game_time AND created_at = :at_stamp AND id <= :id",
+                                          {game_time: score.time, at_stamp: score.created_at, id: score.id}))
+                        .count
+    redirect_to play_scores_url(score.scene, page: count_so_far / 30 + 1, anchor: score.id)
   end
 end

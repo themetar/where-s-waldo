@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     post "guess", on: :member
     resources :scores, only: [:index, :new, :create]
   end
+  resources :scores, only: [:show]
 end

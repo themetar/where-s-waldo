@@ -66,4 +66,11 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
     get play_scores_path(scenes(:beach), page: 2)
     assert_select "li:first-child", "Player 31 290"
   end
+
+  test "show should redirect to page of index" do
+    score = scores(:score_70)
+    get score_path(score)
+    assert_response :redirect
+    assert_redirected_to play_scores_path(score.scene, page: 3, anchor: score.id)
+  end
 end
