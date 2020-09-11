@@ -23,7 +23,7 @@ class ScoresController < ApplicationController
     @score = @scene.scores.build(player_name: params[:player_name], time: (end_time - start_time).round)
     if @score.save
       session[:game_data] = nil # clear
-      redirect_to play_scores_url(scene_id)
+      redirect_to score_url(@score)
     else
       render :new
     end

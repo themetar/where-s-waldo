@@ -31,8 +31,9 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
     assert_difference "Score.count", 1 do
       post play_scores_path(scenes(:beach)), params: {player_name: "P. Erson"}
     end
-    assert_response :redirect
     assert_nil session[:game_data]
+    assert_response :redirect
+    assert_redirected_to score_url(Score.order(created_at: :DESC).first)
   end
 
   test "should reject posting to other scene's scores" do
