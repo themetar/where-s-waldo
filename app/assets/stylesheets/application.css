@@ -15,6 +15,13 @@
  *= require_self
  */
 
+.container {
+  margin: 0 auto;
+  min-width: max-content;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
 .fullscreen-overlay {
   position: fixed;
   left: 0;
@@ -50,3 +57,10 @@
 .center { text-align: center; }
 
 .hidden { display: none; }
+
+span {
+  position: sticky;
+  left: 1em;
+}
+
+footer a { color: red; }

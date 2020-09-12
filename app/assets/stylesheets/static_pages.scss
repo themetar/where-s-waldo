@@ -1,6 +1,12 @@
-.container {
-  margin: 0 auto;
-  padding-top: 2rem;
+.home {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+}
+
+.home + footer {
+  position: absolute;
+  bottom: 0;
 }
 
 .game-info {
@@ -21,6 +27,37 @@
   }
 }
 
-.scenes-list { transition: transform 200ms ease-in; }
+.scenes-list {
+  transition: transform 200ms ease-in;
 
-.scenes-list.hidden { transform: scaleY(0); }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1em;
+  justify-items: start;
+
+  padding-left: 0;
+
+  p { grid-column: 1 / -1; }
+
+  li { list-style: none; }
+
+  li a {
+    display: inline-block;
+    border: 1px solid red;
+    padding: .5em;
+    color: inherit;
+    font-size: 1.5rem;
+
+    &:link { text-decoration: none; }
+    &:hover {
+      border-color: gray;
+      background: lightgray;
+    }
+    &:active { color: red; }
+  }
+}
+
+.scenes-list.hidden {
+  display: block;
+  transform: scaleY(0);
+}

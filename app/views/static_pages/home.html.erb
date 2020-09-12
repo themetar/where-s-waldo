@@ -1,11 +1,12 @@
-<div class="container center">
+<div class="home center">
   <header class="game-info">
     <p>Find Odlaw, Wizard Whitebeard, Wenda, and Waldo</p>
     <%= image_tag "logo.png" %>
-    <h1>Where Is Waldo?</h1>
+    <h1>Where's Waldo?</h1>
   </header>
   <button>Play</button>
   <ol class="scenes-list hidden">
+    <p>Select a page:</p>
     <% @scenes.each do |scene| %>
     <li><%= link_to scene.title, play_path(scene) %></li>
     <% end %>

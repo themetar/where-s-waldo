@@ -32,3 +32,18 @@
     }
   }
 }
+
+// Scoreboard
+
+ol.scoreboard {
+  padding-left: 0;
+  max-width: 800px;
+  margin: 0 auto;
+
+  li { list-style-position: inside; }
+}
+
+li:target {
+  background: orange;
+  box-shadow: 0 0 1em orange;
+}
