@@ -53,7 +53,6 @@ h1, h2 { font-family: 'Times New Roman', Times, serif; }
 .sections > div {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
 }
 
 .time { font-size: 2rem; }
