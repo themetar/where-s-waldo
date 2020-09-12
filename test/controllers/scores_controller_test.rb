@@ -60,12 +60,12 @@ class ScoresControllerTest < ActionDispatch::IntegrationTest
 
   test "should sort scores by time" do
     get play_scores_path(scenes(:beach))
-    assert_select "li:first-child", "Player 3 10"
+    assert_select "ol.scoreboard li:first-child .name", "Player 3"
   end
 
   test "should page scores" do
     get play_scores_path(scenes(:beach), page: 2)
-    assert_select "li:first-child", "Player 31 290"
+    assert_select "ol.scoreboard li:first-child .name", "Player 31"
   end
 
   test "show should redirect to page of index" do

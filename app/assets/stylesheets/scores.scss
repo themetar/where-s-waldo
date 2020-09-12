@@ -41,7 +41,21 @@ ol.scoreboard {
   margin: 0 auto;
   font-size: 1.5em;
 
-  li { list-style-position: inside; }
+  li {
+    display: flex;
+    align-items: center;
+    padding: .1em .3em;
+  }
+
+  .name {
+    flex-grow: 1;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
+  .time { font-size: 1.2em; }
+
+  .score { display: inline-block; }
 }
 
 li:target {

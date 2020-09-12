@@ -3,9 +3,10 @@
 <%= render "pagination" %>
 <% end %> 
 <ol start="<%= (@pagination[:page] - 1) * @pagination[:per_page] + 1 %>" class="scoreboard">
-<% @scores.each do |score| %>
+<% @scores.each_with_index do |score, i| %>
   <li id="<%= score.id %>">
-    <%= score.player_name %> <%= score.time %>
+    <span class="rank"><%= (@pagination[:page] - 1) * @pagination[:per_page] + i + 1 %></span>
+    <%= render "score", score: score %>
   </li>
 <% end %>
 </ol>
