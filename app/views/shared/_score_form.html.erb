@@ -16,7 +16,7 @@
       </div>
       <div>
         <span>Time</span>
-        <span class="time"><%= if @score then @score.time end %></span>
+        <span class="time"><%= if @score then format_time(@score.time) end %></span>
       </div>
     </div>
     <div class="center">

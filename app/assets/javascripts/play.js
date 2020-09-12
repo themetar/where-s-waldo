@@ -44,6 +44,21 @@ const makeMissMarker = function() {
   return div;
 };
 
+const formatTime = function(time) {
+  if (time < 10)
+    return `00:0${time}`;
+  if (time < 60)
+    return `00:${time}`;
+  // else
+  let arr = [];
+  while (time > 0) {
+    let mod = time % 60;
+    arr.push(mod);
+    time = (time - mod) / 60;
+  }
+  return arr.reverse().map(n => n < 10 ? `0${n}` : n).join(":");
+};
+
 document.addEventListener("turbolinks:load", () => {
   const token = document.getElementsByName('csrf-token')[0].content;
 
@@ -121,7 +136,7 @@ document.addEventListener("turbolinks:load", () => {
       if (data.won) {
         // inform the player. show score form
         let timeSpan = document.querySelector(".time");
-        timeSpan.innerHTML = data.time;
+        timeSpan.innerHTML = formatTime(data.time);
         let form_overlay = document.querySelector(".fullscreen-overlay");
         form_overlay.classList.remove("hidden");
       }
