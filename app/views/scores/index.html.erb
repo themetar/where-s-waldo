@@ -1,3 +1,9 @@
+<div class="to-home center">
+  <a href="<%= root_path %>">
+    <%= image_tag "logo.png" %>
+    <div>Where's Waldo?</div>
+  </a>
+</div>
 <h1>High scores for "<%= link_to @scene.title, play_path(@scene) %>"</h1>
 <% if @pagination[:pages] > 1 %> 
 <%= render "pagination" %>
