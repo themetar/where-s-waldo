@@ -1,4 +1,4 @@
-<h1>High scores for <%= link_to @scene.title, play_path(@scene) %></h1>
+<h1>High scores for "<%= link_to @scene.title, play_path(@scene) %>"</h1>
 <% if @pagination[:pages] > 1 %> 
 <%= render "pagination" %>
 <% end %> 
