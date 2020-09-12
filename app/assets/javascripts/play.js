@@ -144,7 +144,7 @@ document.addEventListener("turbolinks:load", () => {
   };
 
 
-  sceneBox.addEventListener("click", event => {
+  sceneBox && sceneBox.addEventListener("click", event => {
     if (waitingOnAPI) return;
 
     if (event.target.closest(".target-box")) return;
