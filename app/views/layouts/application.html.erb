@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WhereIsWaldo</title>
+    <title>Where's Waldo?</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,9 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+      <footer><span>"Where's Waldo?" by Martin Handford. Programming by <a href="https://github.com/themetar">themetar</a>.</span></footer>
+    </div>
   </body>
 </html>
