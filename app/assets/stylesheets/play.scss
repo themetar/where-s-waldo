@@ -59,10 +59,34 @@ select { min-width: 100%; }
 
 .waiting-marker {
   position: absolute;
-  display: block;
-  background: orange;
-  width: 30px;
-  height: 30px;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    background: orange;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: -10px;
+    animation: rotation 1s ease-in-out infinite normal;
+  }
+
+  &::before {
+    left: -30px;
+    transform-origin: 30px 10px;
+  }
+
+  &::after {
+    left: 10px;
+    transform-origin: -10px 10px;
+  }
+}
+
+@keyframes rotation {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
 }
 
 .hit-marker, .waiting-marker { pointer-events: none; }
