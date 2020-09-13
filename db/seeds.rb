@@ -14,8 +14,8 @@ unless Scene.find_by(asset_name: "waldo-1.jpg")
   beach.character_locations.create({character: :wenda,  x: 2004,  y: 627})
 end
 
-unless Scene.find_by(asset_name: "waldo-2.jpeg")
-  beach = Scene.create({title: "Department store", asset_name: "waldo-2.jpeg"})
+unless Scene.find_by(asset_name: "waldo-2.jpg")
+  beach = Scene.create({title: "Department store", asset_name: "waldo-2.jpg"})
   beach.character_locations.create({character: :odlaw,  x: 442,  y: 1022})
   beach.character_locations.create({character: :wenda,  x: 672,  y: 1035})
   beach.character_locations.create({character: :waldo,  x: 947,  y: 255})
