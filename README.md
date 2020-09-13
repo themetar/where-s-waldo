@@ -1,24 +1,18 @@
-# README
+# Where's Waldo?
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Web-app game.
 
-Things you may want to cover:
+## Dependencies
 
-* Ruby version
+To run locally, the app requires Ruby and a PostgreSQL database.
 
-* System dependencies
+To run:
+1. Clone the code
+2. run `bundle install`
+3. Set-up the database `rails db:migrate`
+4. Seed the database `rails db:seed`
+5. Start the server `rails server`
 
-* Configuration
+## Origin
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Project assignment for The Odin Project's [Javascript course](https://www.theodinproject.com/courses/javascript).
